@@ -6,16 +6,17 @@ webdriver:
   headless: False
   use: edge
   edge:
-    bin: msedgedriver.exe
+    bin: edgedriver_win64/msedgedriver.exe
   chrome:
     bin: chromedriver
     no_sandbox: True
 
 output:
   use:
-    - print
-    - xml
+    # - print
+    # - xml
     - debug
+    - grpc
   xml:
     save_path: "./"
     file_pattern: "{room_id}_{ts}.xml"
@@ -27,7 +28,7 @@ output:
 
 live:
   rooms:
-    - ""
+    - "489441297789"
   users:
     - ""
 

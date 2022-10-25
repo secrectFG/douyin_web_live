@@ -34,8 +34,8 @@ class BrowserManager():
         _rooms = _live_config.get("rooms", [])
         if type(_rooms) is not list:
             _rooms = [_rooms]
-        for _user in _users:
-            self.open_user_page(str(_user))
+        # for _user in _users:
+        #     self.open_user_page(str(_user))
         for _room in _rooms:
             self.open_live_page(str(_room))
 

@@ -12,6 +12,7 @@ from messages.member import MemberMessage
 from messages.roomuserseq import RoomUserSeqMessage
 from messages.social import SocialMessage
 from output.debug import DebugWriter
+from output.grpc import Grpc
 from output.print import Print
 from output.xml import XMLWriter
 from protobuf import message_pb2, wss_pb2
@@ -28,6 +29,7 @@ class OutputManager():
         "print": Print,
         "xml": XMLWriter,
         "debug": DebugWriter,
+        "grpc": Grpc,
     }
     _writer: "List[IOutput]" = []
     _thread: "Optional[threading.Thread]"= None

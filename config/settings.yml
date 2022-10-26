@@ -28,9 +28,13 @@ output:
 
 live:
   rooms:
-    - "489441297789"
+    - "518079818401"
   users:
     - ""
 
 api:
   userinfo: 'https://live.douyin.com/webcast/user/?aid=6383&target_uid='
+
+grpc:
+  host: 127.0.0.1
+  port: 17989

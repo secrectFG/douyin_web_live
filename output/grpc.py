@@ -8,7 +8,7 @@ from output.IOutput import IOutput
 import grpc
 import dmgrpc.grpc_pb2 as pb2
 import dmgrpc.grpc_pb2_grpc as pb2_grpc 
-
+from config.helper import config
 import json
 
 RED = Fore.RED
@@ -34,8 +34,9 @@ class GrpcManager:
 
 def init_grpcmanager():
     global LiveMessagerStub
-    ip_address = '127.0.0.1'
-    port = 17989
+    _config = config()['grpc']
+    ip_address = _config['host']
+    port = _config['port']
     channel = grpc.insecure_channel(f"{ip_address}:{port}")
     LiveMessagerStub = pb2_grpc.LiveMessagerStub(channel)
     return GrpcManager(channel)
@@ -46,8 +47,8 @@ class Grpc(IOutput):
         try:
             content = msg.content
             user = msg.user()
-            # image = user.avatarThumb
-            # imageurl = image.urlList[0]
+            image = user.avatarThumb
+            imageurl = image.urlList[0]
             print(f"\n{BLUE}[+] {msg} {RESET}")
         
             msginfo={
@@ -55,6 +56,7 @@ class Grpc(IOutput):
                 'id':user.id,
                 'nickname':user.nickname,
                 'content':content,
+                'imageurl':imageurl,
             }
             LiveMessagerStub.HandleJsonMsg.future(
                 pb2.StringMsg(type='抖音消息',jsonStr=json.dumps(msginfo))

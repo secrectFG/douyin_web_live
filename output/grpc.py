@@ -49,7 +49,7 @@ class Grpc(IOutput):
             user = msg.user()
             image = user.avatarThumb
             imageurl = image.urlList[0]
-            print(f"\n{BLUE}[+] {msg} {RESET}")
+            print(f"{BLUE}[+] {msg} {RESET}")
         
             msginfo={
                 'type':'聊天',
@@ -69,7 +69,7 @@ class Grpc(IOutput):
     #     print(f"\n{CYAN}[+] {msg} {RESET}")
 
     def member_output(self, msg:'MemberMessage'):
-        print(f"\n{RED}[+] {msg} {RESET}")
+        print(f"{RED}[+] {msg} {RESET}")
         user = msg.user()
         image = user.avatarThumb
         imageurl = image.urlList[0]
@@ -89,7 +89,7 @@ class Grpc(IOutput):
     #     print(f"\n{GREEN}[+] {msg} {RESET}")
 
     def gift_output(self, msg:'GiftMessage'):
-        print(f"\n{MAGENTA}[+] {msg} {RESET}")
+        print(f"{MAGENTA}[+] {msg} {RESET}")
         user = msg.user()
         msginfo={
             'type':'礼物',
